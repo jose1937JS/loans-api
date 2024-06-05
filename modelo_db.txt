@@ -1,0 +1,17 @@
+USERS
+- nombre
+- email
+- clave
+
+PRESTAMOS
+- cantidad
+- nombre
+- motivo
+- fecha de prestamo
+- fecha estimada de devolucion
+- cantidad_restante
+- cantidad_devuelta
+
+DEVOLUCIONES
+- cantidad
+- prestamo_id
