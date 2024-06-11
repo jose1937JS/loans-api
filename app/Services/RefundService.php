@@ -17,7 +17,7 @@ class RefundService
         try {
             DB::beginTransaction();
 
-                // Seleccionar el ultimo retorno del prestamo
+            // Seleccionar el ultimo retorno del prestamo
             $early_refund = Refund::where('loan_id', $data['loan_id'])->orderBy('id', 'desc')->first();
 
             // Validaciones
@@ -69,9 +69,14 @@ class RefundService
             $remaining_amount = 0;
             $refund_in_loan_currency = $data['amount'];
 
+            // TODO: Hacer el calculo con una tasa oficial capturada por la api:
+            // https://pydolarvenezuela-api.vercel.app/api/v1/dollar?page=criptodolar&monitor=enparalelovzla
+            // Tener en cuenta precio de dolar al dia de hoy
+
+
             // CAlculo del Monto en VES
             if($data['currency'] == 'USD' && $refund->loan->currency == 'VES') {
-                $refund_in_loan_currency = $data['amount'] * $refund->loan->rate;
+                $refund_in_loan_currency = $data['amount'] * $refund->loan->rate; // Hacer calculo con rate actual
             }
 
             // Calculo del Monto en USD
