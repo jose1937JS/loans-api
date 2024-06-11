@@ -20,7 +20,8 @@ class LoanController extends Controller
      */
     public function index()
     {
-        //
+        $loans = $this->loanService->index();
+        return LoanResource::collection($loans);
     }
 
     /**
@@ -28,8 +29,8 @@ class LoanController extends Controller
      */
     public function store(LoanStoreRequest $request)
     {
-        return $loan = $this->loanService->store([]);
-        // return LoanResource::make($loan);
+        $loan = $this->loanService->store($request->safe()->all());
+        return LoanResource::make($loan);
     }
 
     /**
@@ -37,7 +38,8 @@ class LoanController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $loan = $this->loanService->show($id);
+        return LoanResource::make($loan);
     }
 
     /**

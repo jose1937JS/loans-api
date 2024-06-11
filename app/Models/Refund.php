@@ -9,9 +9,9 @@ class Refund extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['amount', 'loan_id'];
+    protected $fillable = ['amount', 'loan_id', 'currency', 'ref_usd', 'rate'];
 
-    public function loans()
+    public function loan()
     {
         return $this->belongsTo(Loan::class);
     }

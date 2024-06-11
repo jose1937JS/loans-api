@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LoanController;
+use App\Http\Controllers\RefundController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,3 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('loans', LoanController::class);
+Route::apiResource('refunds', RefundController::class);

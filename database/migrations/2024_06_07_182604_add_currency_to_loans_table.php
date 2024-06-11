@@ -11,11 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('refunds', function (Blueprint $table) {
-            $table->id();
-            $table->float('amount', 6, 2);
-            $table->foreignId('loan_id')->constrained();
-            $table->timestamps();
+        Schema::table('loans', function (Blueprint $table) {
+            $table->enum('currency', ['VES', 'USD'])->default('VES');
         });
     }
 
@@ -24,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('refunds');
+        Schema::table('loans', function (Blueprint $table) {
+            $table->dropColumn('currency');
+        });
     }
 };

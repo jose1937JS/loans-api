@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('loans', function (Blueprint $table) {
             $table->id();
-            $table->float('amount', 6, 3);
+            $table->float('amount', 6, 2);
             $table->string('name');
             $table->string('reason')->nullable();
-            $table->float('remaining_amount', 6, 3)->default(0);
-            $table->float('amount_returned', 6, 3)->default(0);
+            $table->float('remaining_amount', 6, 2)->default(0);
+            $table->float('amount_returned', 6, 2)->default(0);
             $table->date('estimated_refund_date')->nullable();
             $table->timestamps();
         });

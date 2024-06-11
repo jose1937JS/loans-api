@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class LoanResource extends JsonResource
+class RefundResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,17 +16,11 @@ class LoanResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name' => $this->name,
             'amount' => number_format($this->amount, 2),
             'currency' => $this->currency,
             'ref_usd' => number_format($this->ref_usd, 2),
-			'reason' => $this->reason,
-			'rate' => number_format($this->rate, 2),
-			'remaining_amount' => number_format($this->remaining_amount, 2),
-			'amount_returned' => number_format($this->amount_returned, 2),
-			'estimated_refund_date' => $this->estimated_refund_date,
-            'created_at' => date_format($this->created_at, 'Y-m-d H:i:s'),
-            'refunds' => RefundResource::collection($this->whenLoaded('refunds')),
+            'rate' => number_format($this->rate, 2),
+            'created_at' => date_format($this->created_at, 'Y-m-d H:i:s')
         ];
     }
 }

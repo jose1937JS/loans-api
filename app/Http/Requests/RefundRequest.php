@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class LoanStoreRequest extends FormRequest
+class RefundRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,13 +22,11 @@ class LoanStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required',
             'amount' => 'required|numeric',
             'ref_usd' => 'required|numeric',
             'currency' => 'required|string',
-			'reason' => 'nullable|string',
-			'estimated_refund_date' => 'nullable|string|date',
-			'rate' => 'nullable|numeric',
+            'loan_id' => 'required|exists:loans,id',
+            'rate' => 'nullable|numeric',
         ];
     }
 }
