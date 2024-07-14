@@ -24,9 +24,9 @@ class LoanStoreRequest extends FormRequest
         return [
             'name' => 'required',
             'amount' => 'required|numeric',
-            'ref_usd' => 'required|numeric',
+            'ves_exchange' => 'required|numeric',
             'currency' => 'required|string',
-			'reason' => 'nullable|string',
+			'description' => 'nullable|string',
 			'estimated_refund_date' => 'nullable|string|date',
 			'rate' => 'nullable|numeric',
         ];

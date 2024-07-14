@@ -22,3 +22,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::apiResource('loans', LoanController::class);
 Route::apiResource('refunds', RefundController::class);
+
+// For testing purposes
+Route::get('dollar', [RefundController::class, 'dollar']);

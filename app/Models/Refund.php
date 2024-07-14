@@ -9,7 +9,7 @@ class Refund extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['amount', 'loan_id', 'currency', 'ref_usd', 'rate'];
+    protected $fillable = ['amount', 'loan_id', 'currency', 'ves_exchange', 'rate'];
 
     public function loan()
     {

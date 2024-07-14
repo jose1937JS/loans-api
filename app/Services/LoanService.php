@@ -22,11 +22,11 @@ class LoanService
     {
         $loan = Loan::create([
             'name' => $data['name'],
-            'amount' => number_format($data['amount'], 2),
+            'amount' => number_format($data['amount'], 2, '.', ''),
             'currency' => $data['currency'],
-            'ref_usd' => number_format($data['ref_usd'], 2),
-            'reason' => $data['reason'],
-            'remaining_amount' => number_format($data['amount'], 2),
+            'ves_exchange' => number_format($data['ves_exchange'], 2, '.', ''),
+            'description' => $data['description'],
+            'remaining_amount' => number_format($data['amount'], 2, '.', ''),
             'estimated_refund_date' => $data['estimated_refund_date'],
             'rate' => $data['rate'],
         ]);

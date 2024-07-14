@@ -23,7 +23,7 @@ class RefundRequest extends FormRequest
     {
         return [
             'amount' => 'required|numeric',
-            'ref_usd' => 'required|numeric',
+            'ves_exchange' => 'required|numeric',
             'currency' => 'required|string',
             'loan_id' => 'required|exists:loans,id',
             'rate' => 'nullable|numeric',

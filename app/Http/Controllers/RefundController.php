@@ -8,13 +8,18 @@ use App\Models\Refund;
 use App\Services\RefundService;
 use Illuminate\Http\Request;
 
+use App\Services\DollarApiService;
+use Illuminate\Support\Facades\Log;
+
 class RefundController extends Controller
 {
     protected $refundService;
+    protected $dollarApiService;
 
-    public function __construct(RefundService $refundService)
+    public function __construct(RefundService $refundService, DollarApiService $dollarApiService)
     {
         $this->refundService = $refundService;
+        $this->dollarApiService = $dollarApiService;
     }
 
     public function index()
@@ -47,5 +52,12 @@ class RefundController extends Controller
     public function delete($id)
     {
 
+    }
+
+    // For testing purposes
+    public function dollar()
+    {
+        $res = $this->dollarApiService->get();
+        return $res->json();
     }
 }
