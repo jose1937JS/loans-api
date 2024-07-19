@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('refunds', function (Blueprint $table) {
             $table->id();
             $table->float('amount', 6, 2);
-            $table->float('ves_exchange', 6, 2);
+            $table->float('ves_exchange', 7, 2);
             $table->enum('currency', ['VES', 'USD'])->default('VES');
             $table->float('rate', 6, 2);
             $table->foreignId('loan_id')->constrained();

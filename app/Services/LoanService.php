@@ -29,6 +29,7 @@ class LoanService
             'remaining_amount' => number_format($data['amount'], 2, '.', ''),
             'estimated_refund_date' => $data['estimated_refund_date'],
             'rate' => $data['rate'],
+            'rate_type' => $data['rate_type'],
         ]);
 
         return $loan;

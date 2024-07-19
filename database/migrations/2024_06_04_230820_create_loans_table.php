@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('loans', function (Blueprint $table) {
             $table->id();
             $table->float('amount', 6, 2);
-            $table->float('ves_exchange', 6, 2);
+            $table->float('ves_exchange', 7, 2);
             $table->string('name');
             $table->string('rate');
             $table->string('rate_type');

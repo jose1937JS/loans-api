@@ -22,6 +22,7 @@ class LoanResource extends JsonResource
             'ves_exchange' => number_format($this->ves_exchange, 2, '.', ''),
 			'description' => $this->description,
 			'rate' => number_format($this->rate, 2, '.', ''),
+			'rate_type' => $this->rate_type,
 			'remaining_amount' => number_format($this->remaining_amount, 2, '.', ''),
 			'amount_returned' => number_format($this->amount_returned, 2, '.', ''),
 			'estimated_refund_date' => $this->estimated_refund_date,

@@ -29,6 +29,7 @@ class LoanStoreRequest extends FormRequest
 			'description' => 'nullable|string',
 			'estimated_refund_date' => 'nullable|string|date',
 			'rate' => 'nullable|numeric',
+			'rate_type' => 'required|string',
         ];
     }
 }
