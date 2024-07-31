@@ -27,7 +27,7 @@ class LoanStoreRequest extends FormRequest
             'ves_exchange' => 'required|numeric',
             'currency' => 'required|string',
 			'description' => 'nullable|string',
-			'estimated_refund_date' => 'nullable|string|date',
+			'estimated_refund_date' => 'nullable|string|date:Y-m-d',
 			'rate' => 'nullable|numeric',
 			'rate_type' => 'required|string',
         ];

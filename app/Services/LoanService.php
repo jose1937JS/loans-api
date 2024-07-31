@@ -8,7 +8,7 @@ class LoanService
 {
     public function index()
     {
-        $loans = Loan::all();
+        $loans = Loan::orderBy('created_at', 'desc')->get();
         return $loans;
     }
 
