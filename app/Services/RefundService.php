@@ -21,21 +21,29 @@ class RefundService
         $remaining_amount_ves = $loan->remaining_amount * $data['rate'];
 
         // Validar que no se puedan agregar mas retornos si la deuda está saldada
-        if($loan->remaining_amount == 0) {
-            return 'La deuda ya ha sido saldada';
+        if($loan->remaining_amount <= 0) {
+            return ["message" => "La deuda ya ha sido saldada", "passed" => false];
         }
 
         if($data['amount'] > $loan->remaining_amount) {
             // $remaining_amount_ves = $loan->remaining_amount * $data['rate'];
-            return "El monto a pagar supera la deuda restante. Se deben: {$loan->remaining_amount} USD o {$remaining_amount_ves} VES";
+            return [
+                "message" => "El monto a pagar supera la deuda restante. Se deben: {$loan->remaining_amount} USD o {$remaining_amount_ves} VES",
+                "passed" => false
+            ];
         }
 
         if($data['amount'] > $loan->remaining_amount) {
-            return "El monto a pagar supera la deuda restante. Se deben: {$loan->remaining_amount} USD o {$remaining_amount_ves} VES";
+            return [
+                "message" => "El monto a pagar supera la deuda restante. Se deben: {$loan->remaining_amount} USD o {$remaining_amount_ves} VES",
+                "passed" => false
+            ];
         }
+
+        return ["message" => "Validación exitosa", "passed" => true];
     }
 
-    public function store(array $data): Refund | string
+    public function store(array $data)
     {
         try {
             DB::beginTransaction();
@@ -43,7 +51,12 @@ class RefundService
             // Seleccionar el prestamo
             $loan = Loan::find($data['loan_id']);
 
-            $this->validate($data, $loan);
+            $validation = $this->validate($data, $loan);
+
+            // Si la validacion falla, retornar el mensaje
+            if($validation["passed"] === false) {
+                return $validation["message"];
+            }
 
             // Crear la devolucion
             $refund = Refund::create([
